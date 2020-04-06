@@ -26,21 +26,32 @@
 <body>
     <div id="app">
         <!-- barra menu -->
-        <nav class="styleMenuPrincipal">
+        <nav style="background-color: #f1f1f1;">
+            <div class="row">
+                <div class="col-md-12" style="text-align: right; padding-top:4px; padding-bottom: 4px; padding-right: 10%">
+                    <a href="https://www.instagram.com/encontreecompre.lmts/" target="tab">
+                        <img src="{{asset('icones/instagram_cinza_logo.svg')}}" width="25px">
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <nav class="styleMenuPrincipal" style="background-color:#1492e6;">
             <div class="container">
-                <div class="row justify-content-center">
-                    <!-- logo/cidade -->
-                    <div class="col-sm-4" style="padding: 5px; margin-bottom: -20px;">
-                        <div class="row justify-content-center">
-                            <div class="col styleMenuPrincipal_container_logo">
-                                <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: black; ">
-                                <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="170px"></a>
+                <div class="row" style="padding-top: 5px;">
+                    <!-- menu superior -->
+                    <div class="col-md-12">
+                        <div class="row">
+                            <!-- logo -->
+                            <div class="col-md-2 styleMenuPrincipal_container_logo" >
+                                <a href="{{route('inicio')}}"><img id="styleMenuPrincipal_logo" src="{{asset('icones/encontreecomprebranco_logo.png')}}" width="150px"></a>
                             </div>
-                            <div class="col">
-                                <div class="styleMenuPrincipal_container_select">
-                                    <form action="{{route('alterar.municipio')}}" method="POST">
+                            <!-- cidade/pesquisar/botao -->
+                            <div class="col-md-7" style="padding-top: 7px;">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-3 styleMenuPrincipal_input_cidade">
+                                        <form action="{{route('alterar.municipio')}}" method="POST">
                                         @csrf
-                                        <select class="custom-select" name="cidade"  onchange="this.form.submit()" id="styleMenuPrincipal_select">
+                                        <select class="custom-select styleMenuPrincipal_container_select" name="cidade"  onchange="this.form.submit()" style="color: #1492e6">
                                             @foreach($cidades as $cidade)
                                                 @if(Session::get('cidade') == $cidade->nome)
                                                     <option selected value="{{$cidade->nome}}">{{$cidade->nome}}</option>
@@ -49,108 +60,160 @@
                                                 @endif
                                             @endforeach
                                         </select>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--x logo/cidade x-->
-
-                    <div class="col-sm-8">
-                    <!-- pesquisar -->
-                        <form method="post" action="{{route('estabelecimento.busca')}}">
-                            @csrf
-                        <div class="form-group row" style="margin-top: 23px; margin-bottom: 1px;">
-
-                            <div class="col-sm-8" style="">
-                                <div class="input-group mb-3">
-                                  <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
-                                  <div class="input-group-append" style="margin-left: 5px; ">
-                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoPesquisar" style="border-radius: 6px;">
-                                        <img src="{{asset('icones/procurar.svg')}}" width="20px">
-                                        <!-- <a style="color: #1f56fc; font-family: arial; font-size: 15px;">Pesquisar</a> -->
-                                    </button>
-                                  </div>
-                                </div>
-                            </div>
-                            </form>
-                    <!--x pesquisar x-->
-                    <!-- cadastre-se -->
-                            <div class="col-sm-4">
-                                <div class="row ">
-                                    <div class="col-sm-8">
-                                        @guest
-                                        <form method="get" action="{{route('estabelecimento.create')}}">
-                                            <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
                                         </form>
-                                        @endguest
-                                        @auth
-                                          @can('autorizarCadastro',App\Estabelecimento::class)
-                                            <form method="get" action="{{route('estabelecimento.pending')}}">
-                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
-                                            </form>
-                                          @endcan
-                                          @cannot('autorizarCadastro',App\Estabelecimento::class)
-                                            <form method="get" action="{{route('estabelecimento.edit')}}">
-                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
-                                            </form>
-                                          @endcan
-                                        @endauth
                                     </div>
-                                    @guest
-                                      <!-- <form action="{{route('login')}}" method="post"> -->
-                                        <div class="col-sm-4">
-                                            <a class="btn" id="styleMenuPrincipal_login_botao" href="{{route('login')}}">Login</a>
+                                    <div class="col-md-9">
+                                        <form method="post" action="{{route('estabelecimento.busca')}}">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-sm-9 styleMenuPrincipal_input_pesquisar">
+                                                <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="width: 100%; height: 38px;">
+                                            </div>
+                                            <div class="col-sm-3 styleMenuPrincipal_botao_pesquisar">
+                                                <button type="submit" class="btn" id="styleMenuPrincipal_container_BotaoPesquisar">
+                                                    <img src="{{asset('icones/pesquisar_branco_logo.svg')}}" width="23px">
+                                                    <a id="styleMenuPrincipal_botao">Pesquisar</a>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <!-- Login -->
-                                        <!-- <div class="col card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                
+                            
+                            </div>
+                            <!-- login -->
+                            <div class="col-md-3 styleMenuPrincipal_login_container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn styleMenuPrincipalBotaoCadastrar" onclick="logar()">
+                                            <a id="styleMenuPrincipal_login_texto">Olá, faça o seu login ou cadastro</a>
+                                            <a id="styleMenuPrincipal_login_texto_aux">Login</a>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-12 card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
+                                        <form method="POST" action="{{ route('login') }}">
+                                          @csrf
                                           <div class="row justify-content-center" style="text-align: center;">
                                               <div class="col-sm-12" style="text-align: right;">
-                                                  <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="logar()" style="cursor:pointer;"></a>
+                                                  <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="loginClose()" style="cursor:pointer;"></a>
                                               </div>
                                               <div class="col-sm-12">
                                                   <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
                                               </div>
-                                              <div class="col-sm-12" style="margin-top: 10px;">
-                                                  <label>Entrar</label>
-                                              </div>
-                                              <div class="col-sm-12" style="text-align: left;">
-                                                  <label>E-mail</label>
-                                                  <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email">
-                                              </div>
-                                              <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
-                                                  <label>Senha</label>
-                                                  <input type="password" class="form-control styleMenuPrincipal_login_input" id="divLogar_senha" name="senha">
-                                              </div>
-                                              <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
-                                                  <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
-                                                  <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
-                                              </div>
-                                              <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                  <button type="submit" class="btn styleMenuPrincipal_button_logar">Entrar</button>
-                                              </div>
-                                              <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                  <a href="{{ route('password.request') }}" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a>
-                                              </div>
+                                                  <div class="col-sm-12" style="margin-top: 10px;">
+                                                      <label>Entrar</label>
+                                                  </div>
+
+                                                   
+
+                                                          <div class="col-sm-12" style="text-align: left;">
+                                                              <label>E-mail</label>
+                                                              <!-- <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email"> -->
+                                                              <input id="divLogar_email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                                                @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                          </div>
+                                                          <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
+                                                                <label>Senha</label>
+                                                                <input id="divLogar_senha" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                                                @error('password')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                          </div>
+                                                          <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
+                                                              <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
+                                                              <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
+                                                          </div>
+                                                          <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                              <button type="submit" class="btn styleMenuPrincipal_button_logar">Entrar</button>
+                                                          </div>
+                                            </form>
+                                                   
+                                                  <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                      <!-- <a href="{{ route('password.request') }}" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a> -->
+                                                      <a style="color: #1492e6; font-size: 12px; text-decoration: underline; cursor:pointer;" onclick="logar_esqueciASenha()">Não consegue acessar sua conta?</a>
+                                                  </div>
+                                                  <br>
+                                                  <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                    @guest
+                                                    <form method="get" action="{{route('estabelecimento.create')}}">
+                                                        <label class="form-check-label" for="exampleCheck1">Crie sua conta!</label>
+                                                        <button type="submit" class="btn styleMenuPrincipal_button_cadastro">Cadastre-se</button>
+                                                    </form>
+                                                    @endguest
+                                                  </div>
+
                                           </div>
-                                        </div> -->
-                                      <!-- </form> -->
-                                    @endguest
-                                    @auth
-                                      <form action="{{route('logout')}}" method="post">
-                                        @csrf
-                                        <button class="btn" id="styleMenuPrincipal_login_botao" type="submit">
-                                          Sair
-                                        </button>
-                                      </form>
-                                    @endauth
-                                    <!--x Login x-->
+                                    </div>
+                                    <div class="col-md-12 card card-body styleMenuPrincipal_container_login" id="divLogar_esqueciASenha" style="display:none;">
+                                          <div class="row justify-content-center" style="text-align: center;">
+                                              <div class="col-sm-12" style="text-align: right;">
+                                                  <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="loginClose()" style="cursor:pointer;"></a>
+                                              </div>
+                                              <div class="col-sm-12">
+                                                  <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
+                                              </div>
+                                                  
+                                                  <div class="col-sm-12" style="margin-top: 10px;">
+                                                      <label>Esqueci a senha</label>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: left;">
+                                                      <label>E-mail</label>
+                                                      <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email2" name="email">
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                      <button type="submit" class="btn styleMenuPrincipal_button_logar">Enviar link de redefinição de senha</button>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                      <button type="button" class="btn btn-outline-secondary" onclick="logar();">Voltar</button>
+
+                                                  </div>
+                                                  <br>
+                                                  
+
+                                          </div>
+                                    </div>
                                 </div>
                             </div>
-                    <!--x entrar x-->
+
                         </div>
                     </div>
-                    <!-- <div class="col-sm-2" style="background-color: green;">logo/cidade</div> -->
+                    <!--x menu superior x-->
+
+                    <!-- menu inferior -->
+                    <div class="col-md-12 styleMenuPrincipal_menuInferior">
+                        <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
+                            <div class="col-sm-1" style="padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Home</button>
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastro de Cidade</button>
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--x menu inferior x-->
+
                 </div>
             </div>
         </nav>
@@ -286,6 +349,7 @@
         * Função criada para abrir/fechar a div logar
         */
         function logar(){
+            document.getElementById("divLogar_esqueciASenha").style.display = 'none';
             if(document.getElementById("divLogar").style.display == 'none'){
                 document.getElementById("divLogar").style.display = 'block';
                 document.getElementById("divLogar_email").value = "";
@@ -293,6 +357,22 @@
             }else{
                 document.getElementById("divLogar").style.display = 'none';
             }
+        }
+        /*
+        * Função criada para abrir/fechar a div "esqueci a senha"
+        */
+        function logar_esqueciASenha(){
+            document.getElementById("divLogar_email2").value = "";
+            document.getElementById("divLogar").style.display = 'none';
+            document.getElementById("divLogar_esqueciASenha").style.display = 'block';
+            
+        }
+        function loginClose(){
+            document.getElementById("divLogar_email").value = "";
+            document.getElementById("divLogar_email2").value = "";
+            document.getElementById("divLogar_senha").value = "";
+            document.getElementById("divLogar").style.display = 'none';
+            document.getElementById("divLogar_esqueciASenha").style.display = 'none';
         }
     </script>
 </body>

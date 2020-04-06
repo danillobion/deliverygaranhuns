@@ -34,107 +34,124 @@ body {
 
 .styleMenuPrincipal {
   background-color: #ffffff;
-  /*padding-top: 13px;*/
   -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 -moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 .styleMenuPrincipal_container_logo{
-  margin-left: 25px; 
-  padding: 0px; 
-  text-align: right; 
-  margin-top: 11px;
+  text-align: center;
 }
 .styleMenuPrincipal_container_select{
-  padding-right: 15px; 
-  padding-top: 10px; 
-  padding-left: 3px;
+  height: 38px;
 }
-#styleMenuPrincipal_select{
-  margin-top: 12px; 
-  border-color: #f0f0f0; 
-  border-radius: 6px;
-  color: #f0f0f0;
+#styleMenuPrincipal_container_BotaoPesquisar{
+  width: 100%; background-color: #1492e6; border-color: white; border-radius: 6px; border-width: 1.5px;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-.styleMenuPrincipal_titulo {
-  font-size: 23px;
+#styleMenuPrincipal_container_BotaoPesquisar:hover{
+  background-color: #1ca4ff; 
+  border-color: white;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-.styleMenuPrincipalBotaoPesquisar{
-  background-color: white; 
-  height: 40px;
-  border-color: #f0f0f0;
-}
-.styleMenuPrincipalBotaoPesquisar:hover{
-  background-color: #fffafa; 
-  height: 40px;
-  border-color: #f0f0f0;
+#styleMenuPrincipal_botao{
+  color: white;
 }
 .styleMenuPrincipalBotaoCadastrar{
-  background-color: red;
+  background-color: white; width: 100%;
    margin-bottom: 10px;
-    height: 40px;
-     font-size: 16px;
+    height: 36px;
+     font-size: 13px;
       color: white;
        font-weight: bold;
         float: right;
           border-radius: 6px;
            width: 100%;
             font-family: arial;
-}
-
-.styleMenuPrincipal_input {
-  width: 100%;
-  margin: 2px;
-  font-style: italic;
-}
-
-.styleMenuPrincipal_button {
-  background-color: red;
-  padding-top: 10px;
-}
-
-/*-- LOGIN --*/
-.styleMenuPrincipal_container_login{
-  background-color: white;
-  margin-top: 42px; 
-  height: 380px; 
-  position:absolute; 
-  z-index: 2; 
-  border-color: white;
-    -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 -moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-#styleMenuPrincipal_login_botao{
-  background-color: white; 
-  height: 40px;
-  border-radius: 6px;
-  font-size: 16px;
-  font-family: arial;
-  font-weight: bold;
-  border-color: #1492e6;
-  color: #1492e6;
+.styleMenuPrincipalBotaoCadastrar:hover{
+  background-color: white; width: 100%;
+   margin-bottom: 10px;
+     font-size: 13px;
+      color: white;
+       font-weight: bold;
+        float: right;
+          border-radius: 6px;
+           width: 100%;
+            font-family: arial;
+            border-color: #75c8ff;
+            -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-#styleMenuPrincipal_login_botao:hover{
-  background-color: #1492e6;
-  height: 40px;
-  border-radius: 6px;
-  font-size: 16px;
-  font-family: arial;
-  font-weight: bold;
-  border-color: #1492e6;
-  color: white;
+.styleMenuPrincipal_input_cidade{
+  padding-right: 0px;
 }
-.styleMenuPrincipal_login_input{
-  border-color: #f0f0f0;
+.styleMenuPrincipal_input_pesquisar{
+  padding-left: 3px; padding-right: 0px;
+}
+.styleMenuPrincipal_botao_pesquisar{
+  padding-left: 3px; padding-right: 0px;
+}
+.styleMenuPrincipal_login_container{
+  padding-top: 7px;
+}
+#styleMenuPrincipal_login_texto{
+  color: #1492e6; display: block;
+}
+#styleMenuPrincipal_login_texto_aux{
+  color: #1492e6; display: none;
+}
+.styleMenuPrincipal_container_login{
+  z-index: 2;
+  position: absolute;
+  webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 .styleMenuPrincipal_button_logar{
-  width: 100%; 
-  background-color: #1492e6; 
+  background-color: #1492e6;
+  color: white;
+  width: 100%;
+}
+.styleMenuPrincipal_button_logar:hover{
+  background-color: #1ca4ff;
+  color: white;
+  width: 100%;
+}
+.styleMenuPrincipal_button_cadastro{
+  background-color: #6c63ff;
+  width: 100%;
+  color: white;
+}
+.styleMenuPrincipal_button_cadastro:hover{
+  background-color: #8c85fe;
+  width: 100%;
+  color: white;
+}
+.styleMenuPrincipal_menuInferior{
+  display: block;
+}
+.styleMenuPrincipal_botaoInferior{
+  background-color: #1492e6;
+  border-color: #1492e6;
+  font-family: arial;
+  font-weight: bold;
+}
+.styleMenuPrincipal_botaoInferior:hover{
+  background-color: #1492e6;
+  border-color: white;
+  font-family: arial;
+  font-weight: bold;
   color: white;
 }
 
-/*--x LOGIN x--*/
 
 /*--x MENU x--*/
 
@@ -329,9 +346,53 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   }
 
 }
-/*Resolucao especifica para o IPAD */
-@media screen and (max-width: 768px) and (min-width: 575px){
-  #styleMenuPrincipal_imagem_logo{
-    width:100px;
+
+@media screen and (max-width: 1200px) and (min-width: 992px){
+  #styleMenuPrincipal_botao{
+    display: none;
+    color: red;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px){
+  #styleMenuPrincipal_login_texto{
+      display: none;
+  }
+  #styleMenuPrincipal_login_texto_aux{
+    display: block;
+  }
+}
+/*campo pesquisar e login*/
+@media screen and (max-width: 767px) and (min-width: 333px){
+/*input - cidade*/
+.styleMenuPrincipal_input_cidade{
+  padding-right: 15px;
+  padding-bottom: 2px;
+}
+  /*input - pesquisar*/
+.styleMenuPrincipal_input_pesquisar{
+  padding-left: 15px; padding-right: 15px;
+}
+/*botao pesquisar*/
+.styleMenuPrincipal_botao_pesquisar{
+  padding-left: 15px; padding-right: 15px;
+}
+/*container - botao login*/
+.styleMenuPrincipal_login_container{
+  padding-right: 15px;
+}
+/*menu inferior*/
+.styleMenuPrincipal_menuInferior{
+  display: none;
+}
+}
+
+@media screen and (max-width: 991px) and (min-width: 576px){
+  #styleMenuPrincipal_botao{
+    display: none;
+    color: red;
+  }
+  #styleMenuPrincipal_logo{
+    width: 119px;
   }
 }
