@@ -80,8 +80,6 @@
                                     </div>
                                 </div>
                                 
-                                
-                            
                             </div>
                             <!-- login -->
                             <div class="col-md-3 styleMenuPrincipal_login_container">
@@ -346,6 +344,13 @@
     @endif
     <script type="text/javascript">
         /*
+        * condicao para reabrir a div (login) caso o usuario envie algum dado pelo form.
+        */
+        if(document.getElementById("divLogar_email").value != ""){
+            document.getElementById("divLogar").style.display = 'block'; //abrir a div logo apos o carregamento da pagina
+        }
+
+        /*
         * Função criada para abrir/fechar a div logar
         */
         function logar(){
@@ -353,7 +358,9 @@
             if(document.getElementById("divLogar").style.display == 'none'){
                 document.getElementById("divLogar").style.display = 'block';
                 document.getElementById("divLogar_email").value = "";
+                document.getElementById("divLogar_email").required = false;
                 document.getElementById("divLogar_senha").value = "";
+                document.getElementById("divLogar_senha").required = false;
             }else{
                 document.getElementById("divLogar").style.display = 'none';
             }
