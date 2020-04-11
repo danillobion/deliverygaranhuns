@@ -108,6 +108,33 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 #styleMenuPrincipal_login_texto_aux{
   color: #1492e6; display: none;
 }
+#styleMenuPrincipal_sair{
+  background-color: white; 
+  border-color: white; 
+  color: #1492e6; 
+  width: 100%; 
+  margin-bottom: 5px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 13px;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+}
+#styleMenuPrincipal_sair:hover{
+  background-color: white; 
+  border-color: white; 
+  color: #1492e6; 
+  width: 100%; 
+  margin-bottom: 5px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 13px;
+  border-color: #75c8ff;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+}
 .styleMenuPrincipal_container_login{
   z-index: 2;
   position: absolute;
@@ -383,7 +410,10 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 /*menu inferior*/
 .styleMenuPrincipal_menuInferior{
-  display: none;
+  display: block;
+}
+.styleMenuPrincipal_botaoInferior{
+  padding-right: 15px;
 }
 }
 

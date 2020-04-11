@@ -85,13 +85,23 @@
                             <div class="col-md-3 styleMenuPrincipal_login_container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn styleMenuPrincipalBotaoCadastrar" onclick="logar()">
-                                            <a id="styleMenuPrincipal_login_texto">Olá, faça o seu login ou cadastro</a>
-                                            <a id="styleMenuPrincipal_login_texto_aux">Login</a>
-                                        </button>
+                                        @guest
+                                          <button type="button" class="btn styleMenuPrincipalBotaoCadastrar" onclick="logar()">
+                                              <a id="styleMenuPrincipal_login_texto">Olá, faça o seu login ou cadastro</a>
+                                              <a id="styleMenuPrincipal_login_texto_aux">Login</a>
+                                          </button>
+                                        @endguest
+                                        @auth
+                                        <form action="{{route('logout')}}" method="post">
+                                          @csrf
+                                          <button class="btn" type="submit" id="styleMenuPrincipal_sair"> 
+                                            Sair 
+                                          </button>
+                                        </form>
+                                        @endauth
                                     </div>
                                     <div class="col-md-12 card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
-                                        <form method="POST" action="{{ route('login') }}">
+                                        <form method="POST" action="{{ route('login') }}" id="formEntrar">
                                           @csrf
                                           <div class="row justify-content-center" style="text-align: center;">
                                               <div class="col-sm-12" style="text-align: right;">
@@ -103,13 +113,9 @@
                                                   <div class="col-sm-12" style="margin-top: 10px;">
                                                       <label>Entrar</label>
                                                   </div>
-
-                                                   
-
                                                           <div class="col-sm-12" style="text-align: left;">
                                                               <label>E-mail</label>
-                                                              <!-- <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email"> -->
-                                                              <input id="divLogar_email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                              <input id="divLogar_email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus required >
 
                                                                 @error('email')
                                                                     <span class="invalid-feedback" role="alert">
@@ -119,7 +125,7 @@
                                                           </div>
                                                           <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
                                                                 <label>Senha</label>
-                                                                <input id="divLogar_senha" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                                <input id="divLogar_senha" type="password" class="form-control @error('password') is-invalid @enderror" name="password"autocomplete="current-password" required >
 
                                                                 @error('password')
                                                                     <span class="invalid-feedback" role="alert">
@@ -128,11 +134,11 @@
                                                                 @enderror
                                                           </div>
                                                           <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
-                                                              <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
+                                                              <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                               <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
                                                           </div>
                                                           <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                              <button type="submit" class="btn styleMenuPrincipal_button_logar">Entrar</button>
+                                                              <button type="submit" class="btn styleMenuPrincipal_button_logar" onclick="enviar()">Entrar</button>
                                                           </div>
                                             </form>
                                                    
@@ -160,24 +166,25 @@
                                               <div class="col-sm-12">
                                                   <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
                                               </div>
-                                                  
-                                                  <div class="col-sm-12" style="margin-top: 10px;">
-                                                      <label>Esqueci a senha</label>
-                                                  </div>
-                                                  <div class="col-sm-12" style="text-align: left;">
-                                                      <label>E-mail</label>
-                                                      <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email2" name="email">
-                                                  </div>
-                                                  <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                      <button type="submit" class="btn styleMenuPrincipal_button_logar">Enviar link de redefinição de senha</button>
-                                                  </div>
+                                                  <form method="POST" action="{{ route('password.email') }}">
+                                                    @csrf
+                                                    <div class="col-sm-12" style="margin-top: 10px;">
+                                                        <label>Esqueci a senha</label>
+                                                    </div>
+                                                    <div class="col-sm-12" style="text-align: left;">
+                                                        <label>E-mail</label>
+                                                        <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email2" name="email">
+                                                    </div>
+                                                    <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                      @if (Route::has('password.request'))
+                                                        <button type="submit" class="btn styleMenuPrincipal_button_logar">Enviar link de redefinição de senha</button>
+                                                      @endif
+                                                    </div>
+                                                  </form>
                                                   <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
                                                       <button type="button" class="btn btn-outline-secondary" onclick="logar();">Voltar</button>
-
                                                   </div>
                                                   <br>
-                                                  
-
                                           </div>
                                     </div>
                                 </div>
@@ -188,30 +195,89 @@
                     <!--x menu superior x-->
 
                     <!-- menu inferior -->
-                    <div class="col-md-12 styleMenuPrincipal_menuInferior">
-                        <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
-                            <div class="col-sm-2" style="padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
-                            </div>
-                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
-                            </div>
-                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
-                            </div>
-                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
-                            </div>
-                            <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
-                            </div>
-                            <div class="col-sm-1" style="padding-left: 0px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
-                            </div>
+                    @guest
+                    <!-- menu inferior - sem ta logado -->
+                      <div class="col-md-12 styleMenuPrincipal_menuInferior">
+                          <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
+                              <div class="col-sm-2" >
+                                  <form method="get" action="{{route('inicio')}}">
+                                    <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
+                                  </form>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
+                              </div>
+                          </div>
+                      </div>
+                      <!--x menu inferior - sem ta logado x-->
+                    @endguest
+                    @auth
+                      @can('autorizarCadastro',App\Estabelecimento::class)
+                      <!-- menu inferior - admin do sistema -->
+                        <div class="col-md-12 styleMenuPrincipal_menuInferior">
+                          <div class="row justify-content-left" style="padding-bottom: 5px; padding-top: 5px;">
+                              <div class="col-sm-2">
+                                <form method="get" action="{{route('inicio')}}">
+                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
+                                </form>
+                              </div>
+                              <div class="col-sm-3">
+                                 <form method="get" action="{{route('estabelecimento.pending')}}">
+                                      <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Pendentes</button>
+                                  </form>
+                              </div>
+                          </div>
                         </div>
-                    </div>
+                        <!--x menu inferior - admin do sistema x-->
+                      @endcan
+                      @cannot('autorizarCadastro',App\Estabelecimento::class)
+                        @if(auth()->user()->tipo == 'ESTABELECIMENTO')
+                        <!-- menu inferior - adm de um estabelecimento -->
+                          <div class="col-md-12 styleMenuPrincipal_menuInferior">
+                            <div class="row justify-content-left" style="padding-bottom: 5px; padding-top: 5px;">
+                                <div class="col-sm-2">
+                                  <form method="get" action="{{route('inicio')}}">
+                                    <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
+                                  </form>
+                                </div>
+                                <div class="col-sm-2">
+                                    <form method="get" action="{{route('estabelecimento.edit')}}">
+                                        <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Perfil</button>
+                                    </form>
+                                </div>
+                            </div>
+                          </div>
+                        <!--x menu inferior - adm de um estabelecimento x-->
+                        @else
+                        <!-- menu inferior - ????? -->
+                          <div class="col-md-12 styleMenuPrincipal_menuInferior">
+                            <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
+                                <div class="col-sm-2">
+                                    <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
+                                </div>
+                                <div>
+                                    <form method="get" action="{{route('estabelecimento.listUser', auth()->user()->id)}}">
+                                        <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior">Pendentes</button>
+                                    </form>
+                                </div>
+                            </div>
+                          </div>
+                        @endif
+                      @endcan
+                    @endauth
                     <!--x menu inferior x-->
-
                 </div>
             </div>
         </nav>
@@ -229,15 +295,6 @@
                 </div>
             </div>
         </div> --}}
-        <!-- <div class="row justify-content-center styleConteudo_aviso" align="center">
-
-            <div class="col-sm-6">
-                <img src="{{ asset('/icones/alerta_logo.svg') }}" class="svg" />
-                <p class="styleConteudo_mensagem">
-                    <strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.
-                </p>
-            </div>
-        </div> -->
         <div class="container" style="padding-top: 2rem; margin-bottom: 20px;">
             @yield('content')
         </div>
@@ -344,14 +401,13 @@
     @endif
     <script type="text/javascript">
         /*
-        * condicao para reabrir a div (login) caso o usuario envie algum dado pelo form.
+        * condicao para reabrir a div (login) caso o usuario envie algum submit pelo form.
         */
         if(document.getElementById("divLogar_email").value != ""){
             document.getElementById("divLogar").style.display = 'block'; //abrir a div logo apos o carregamento da pagina
         }
-
         /*
-        * Função criada para abrir/fechar a div logar
+        * Função: abrir/fechar a div "logar"
         */
         function logar(){
             document.getElementById("divLogar_esqueciASenha").style.display = 'none';
@@ -365,10 +421,19 @@
                 document.getElementById("divLogar").style.display = 'none';
             }
         }
+        function enviar(){
+          if(document.getElementById("divLogar_email").value == "" && document.getElementById("divLogar_senha").value == ""){
+            document.getElementById("divLogar_email").required = true;
+          }else{
+            document.getElementById("formEntrar").submit();
+          }
+        }
         /*
-        * Função criada para abrir/fechar a div "esqueci a senha"
+        * Função:  abrir/fechar a div "esqueci a senha"
         */
         function logar_esqueciASenha(){
+            document.getElementById("divLogar_email").value = "";
+            document.getElementById("divLogar_senha").value = "";
             document.getElementById("divLogar_email2").value = "";
             document.getElementById("divLogar").style.display = 'none';
             document.getElementById("divLogar_esqueciASenha").style.display = 'block';
