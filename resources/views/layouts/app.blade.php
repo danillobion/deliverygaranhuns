@@ -190,8 +190,8 @@
                     <!-- menu inferior -->
                     <div class="col-md-12 styleMenuPrincipal_menuInferior">
                         <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
-                            <div class="col-sm-1" style="padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Home</button>
+                            <div class="col-sm-2" style="padding-right: 5px;">
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
                             </div>
                             <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
                                 <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
@@ -200,7 +200,7 @@
                                 <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
                             </div>
                             <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
-                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastro de Cidade</button>
+                                <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
                             </div>
                             <div class="col-sm-2" style="padding-left: 0px; padding-right: 5px;">
                                 <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
