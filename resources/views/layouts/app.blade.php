@@ -214,16 +214,18 @@
                     <div class="row container styleRodape_Container">
                         <div class="col-md-12 styleRodape_Texto_Titulo">Mapa do site</div>
                         <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">
-                            <a href="{{route('inicio')}}" style="color: white;">Home</a>
+                            <a href="{{route('inicio')}}" style="color: white;">Página inicial</a>
                         </div>
                         <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">A plataforma</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">O laboratório</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Cadastre sua cidade</div>
                         <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Apoio/Patrocínio</div>
-                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Cadastre-se</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Contato</div>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="row justify-content-center styleRodape_Container_Apoio">
-                        <div class="col-sm-12 styleRodape_Texto_Titulo" style="margin-left: 6px; margin-bottom:5px;">Apoio</div>
+                        <div class="col-sm-12 styleRodape_Texto_Titulo" style="margin-left: 6px; margin-bottom:2.5rem;">Apoio</div>
                         <div class="col-sm-3 styleRodape_Apoio_div" style="margin-top: 2px; margin-bottom: 2px;">
                             <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/sebrae_mini_logo.png') }}" alt="Logo" width="90px;" /></a>
                         </div>
@@ -254,9 +256,14 @@
                             <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
                             <div class="col-sm-12">
                                 <div class="row justify-content-left">
+                                    <div class="col-sm-3"  style="font-family: arial; font-size: 15px; color: white;">
+                            <a href="{{route('inicio')}}" style="color: white;">Página inicial</a>
+                        </div>
                                     <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">A plataforma</div>
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">O laboratório</div>
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Cadastre sua cidade</div>
                                     <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Apoio/Patrocínio</div>
-                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Cadastre-se</div>
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Contato</div>
                                 </div>
                             </div>
                         </div>
