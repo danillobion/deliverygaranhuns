@@ -205,10 +205,14 @@
                                   </form>
                               </div>
                               <div class="col-sm-2">
+                                <a href="http://www.lmts.uag.ufrpe.br/br/content/encontre-compre" target="tab" >
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
+                                </a>
                               </div>
                               <div class="col-sm-2">
+                                <a href="http://lmts.uag.ufrpe.br/br/content/apresenta%C3%A7%C3%A3o" target="tab" >
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
+                                </a>
                               </div>
                               <div class="col-sm-2">
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
@@ -217,7 +221,9 @@
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
                               </div>
                               <div class="col-sm-2">
+                                <a href="#ancoraRodape">
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
+                                </a>
                               </div>
                           </div>
                       </div>
@@ -300,7 +306,7 @@
         </div>
 
         {{-- footer --}}
-        <div class="styleRodape" >
+        <div class="styleRodape">
             <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-sm-2" align="center">
@@ -339,6 +345,7 @@
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Contato
                                 </div>
+                                <a name="ancoraRodape"></a>
                                 <div class="col-sm-12 styleRodape_container">
                                     <div class="row">
                                         <div class="col">
